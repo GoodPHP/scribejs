@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scribe Editor — Inline Rich Text Editor</title>
+    <link rel="icon" href="/public/favicon.ico" type="image/svg+xml" />
+    <link rel="stylesheet" href="/public/demo.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <span class="badge">Production Ready</span>
+          <h1>
+            <span class="accent">Scribe</span>
+            <span> Editor</span>
+          </h1>
+          <p>
+            A modern, extensible rich text editor for the web. Inline-first, plugin-based,
+            and built for real production environments.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <a id="btn-clear" class="btn ghost btn-sm" href="https://scribejs.top" target="_blank" rel="noopener noreferrer">Visit website</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="container features">
+      <div class="feature-card">
+        <div class="feature-icon">◎</div>
+        <h3>Plugin Architecture</h3>
+        <p>Extend functionality with modular plugins. Add only what you need.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>XSS Protection</h3>
+        <p>Built-in HTML sanitization. Safe paste handling from Word &amp; Google Docs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Themeable</h3>
+        <p>CSS variables for complete control. Light &amp; dark mode ready.</p>
+      </div>
+    </section>
+
+    <section class="container demo">
+      <div class="section-heading">
+        <h2>Try It Out</h2>
+        <p>Use the fixed toolbar below to format content.</p>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Fixed Toolbar Demo</h3>
+          <p>A persistent toolbar for a classic editing workflow.</p>
+        </div>
+          <div class="toolbar" id="toolbar-fixed">
+            <div class="group">
+              <button data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7z"/><path d="M7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
+              </button>
+              <button data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5h7M7 19h7M14 5l-4 14"/></svg>
+              </button>
+              <button data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v6a5 5 0 0 0 10 0V4"/><path d="M4 20h16"/></svg>
+              </button>
+              <button data-cmd="strike" title="Strike" aria-label="Strikethrough">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16"/><path d="M9 6c1-.8 2.2-1.2 3.6-1.2 2.4 0 4.4 1 4.4 2.9 0 1.9-1.8 2.7-4 3"/><path d="M7 18c1 .8 2.4 1.2 4 1.2 2.6 0 4.7-1 4.7-2.9"/></svg>
+              </button>
+              <button data-cmd="code" title="Inline Code" aria-label="Inline code">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/></svg>
+              </button>
+            </div>
+
+            <div class="group">
+              <button data-cmd="heading" data-arg="1" title="Heading 1" aria-label="Heading 1"><span class="toolbar-tag">H1</span></button>
+              <button data-cmd="heading" data-arg="2" title="Heading 2" aria-label="Heading 2"><span class="toolbar-tag">H2</span></button>
+              <button data-cmd="heading" data-arg="3" title="Heading 3" aria-label="Heading 3"><span class="toolbar-tag">H3</span></button>
+              <button data-cmd="paragraph" title="Paragraph" aria-label="Paragraph"><span class="toolbar-tag">P</span></button>
+              <button data-cmd="blockquote" title="Quote" aria-label="Blockquote">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h5v6H7z"/><path d="M12 18h5v-6h-5z"/></svg>
+              </button>
+              <button data-cmd="codeBlock" title="Code Block" aria-label="Code block">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9l-2 3 2 3"/><path d="M16 9l2 3-2 3"/></svg>
+              </button>
+            </div>
+
+            <div class="group">
+              <button data-cmd="unorderedList" title="Bullet List" aria-label="Bullet list">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><circle cx="4" cy="6" r="1.2"/><circle cx="4" cy="12" r="1.2"/><circle cx="4" cy="18" r="1.2"/></svg>
+              </button>
+              <button data-cmd="orderedList" title="Numbered List" aria-label="Numbered list">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><path d="M4 6h2"/><path d="M4 12h2"/><path d="M4 18h2"/></svg>
+              </button>
+            </div>
+
+            <div class="group">
+              <button data-cmd="alignLeft" title="Align Left" aria-label="Align left">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h10"/><path d="M5 10h14"/><path d="M5 14h10"/><path d="M5 18h14"/></svg>
+              </button>
+              <button data-cmd="alignCenter" title="Align Center" aria-label="Align center">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10"/><path d="M5 10h14"/><path d="M7 14h10"/><path d="M5 18h14"/></svg>
+              </button>
+              <button data-cmd="alignRight" title="Align Right" aria-label="Align right">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h10"/><path d="M5 10h14"/><path d="M9 14h10"/><path d="M5 18h14"/></svg>
+              </button>
+              <button data-cmd="alignJustify" title="Justify" aria-label="Justify">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14"/><path d="M5 10h14"/><path d="M5 14h14"/><path d="M5 18h14"/></svg>
+              </button>
+              <button data-cmd="indent" title="Indent" aria-label="Indent">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h8"/><path d="M4 10h8"/><path d="M4 14h8"/><path d="M4 18h8"/><path d="M14 8l4 4-4 4"/></svg>
+              </button>
+              <button data-cmd="outdent" title="Outdent" aria-label="Outdent">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6h8"/><path d="M12 10h8"/><path d="M12 14h8"/><path d="M12 18h8"/><path d="M10 8l-4 4 4 4"/></svg>
+              </button>
+            </div>
+
+            <div class="group">
+              <button data-cmd="link" title="Link" aria-label="Insert link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a3.5 3.5 0 0 1 3.5-3.5h3a3.5 3.5 0 1 1 0 7h-3"/><path d="M15 12a3.5 3.5 0 0 1-3.5 3.5H8.5a3.5 3.5 0 1 1 0-7h3"/></svg>
+              </button>
+              <button data-cmd="unlink" title="Unlink" aria-label="Remove link">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a3.5 3.5 0 0 1 3.5-3.5h3a3.5 3.5 0 1 1 0 7h-3"/><path d="M15 12a3.5 3.5 0 0 1-3.5 3.5H8.5a3.5 3.5 0 1 1 0-7h3"/><path d="M4 4l16 16"/></svg>
+              </button>
+              <button data-cmd="insertHR" title="Horizontal Rule" aria-label="Insert horizontal rule">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M7 8h10"/><path d="M7 16h10"/></svg>
+              </button>
+            </div>
+
+            <div class="group">
+              <label class="select">
+                <span>Size</span>
+                <select data-role="font-size">
+                  <option value="12">12</option>
+                  <option value="14">14</option>
+                  <option value="16" selected>16</option>
+                  <option value="18">18</option>
+                  <option value="24">24</option>
+                  <option value="32">32</option>
+                </select>
+              </label>
+              <label class="select">
+                <span>Font</span>
+                <select data-role="font-family">
+                  <option value="Inter, system-ui, sans-serif" selected>Inter</option>
+                  <option value="Georgia, serif">Georgia</option>
+                  <option value="'Courier New', monospace">Courier</option>
+                </select>
+              </label>
+              <label class="color">
+                <span>Text</span>
+                <input data-role="text-color" type="color" value="#0f172a" />
+              </label>
+              <label class="color">
+                <span>Bg</span>
+                <input data-role="bg-color" type="color" value="#ffffff" />
+              </label>
+            </div>
+
+            <div class="group">
+              <button data-cmd="undo" title="Undo" aria-label="Undo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7H3v4"/><path d="M3 11c2-4 7-6 11-4 3 1.5 5 4.5 5 8"/></svg>
+              </button>
+              <button data-cmd="redo" title="Redo" aria-label="Redo">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 7h4v4"/><path d="M21 11c-2-4-7-6-11-4-3 1.5-5 4.5-5 8"/></svg>
+              </button>
+              <button data-cmd="clearFormat" title="Clear Formatting" aria-label="Clear formatting">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h8l-4 12"/><path d="M16 16l4 4"/><path d="M18 14l-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="editor-fixed" class="editor" data-placeholder="Start typing..."></div>
+
+          <div class="status">
+            <div>
+              <strong>HTML</strong>
+              <pre id="html-output-fixed"></pre>
+            </div>
+            <div>
+              <strong>Text</strong>
+              <pre id="text-output-fixed"></pre>
+            </div>
+            <div class="meta">
+              <span id="empty-state-fixed">Empty: true</span>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section class="code-section">
+      <div class="container">
+        <div class="code-header">
+          <h3>Quick Start</h3>
+          <p>Vanilla JS and React usage on one page.</p>
+        </div>
+        <div class="code-grid">
+          <div class="code-card">
+            <div class="code-card-header">
+              <h4>Vanilla JS</h4>
+              <button id="btn-copy-vanilla" class="btn ghost">Copy</button>
+            </div>
+            <pre class="code-block"><code id="code-snippet-vanilla"></code></pre>
+          </div>
+          <div class="code-card">
+            <div class="code-card-header">
+              <h4>React</h4>
+              <button id="btn-copy-react" class="btn ghost">Copy</button>
+            </div>
+            <pre class="code-block"><code id="code-snippet-react"></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container api">
+      <h2>Simple, Intuitive API</h2>
+      <div class="api-grid">
+        <div class="api-card">
+          <h4>editor.bold()</h4>
+          <p>Direct methods for formatting — no command strings to memorize.</p>
+          <span>editor.italic() | editor.underline()</span>
+        </div>
+        <div class="api-card">
+          <h4>editor.heading(2)</h4>
+          <p>Block formatting with simple, typed parameters.</p>
+          <span>editor.blockquote() | editor.orderedList()</span>
+        </div>
+        <div class="api-card">
+          <h4>editor.link(url)</h4>
+          <p>Insert and manage links with ease.</p>
+          <span>editor.link('https://...') | editor.unlink()</span>
+        </div>
+        <div class="api-card">
+          <h4>editor.on('change', fn)</h4>
+          <p>Subscribe to events for real-time updates.</p>
+          <span>'change' | 'focus' | 'blur' | 'selectionChange'</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div>
+          <strong>Scribe Editor</strong>
+          <span class="version">v1.0.0</span>
+        </div>
+        <p>Built with ❤️ for developers who care about their users.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/public/demo.js"></script>
+  </body>
+</html>

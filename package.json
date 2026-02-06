@@ -1,0 +1,54 @@
+{
+  "name": "scribejs-editor",
+  "version": "0.1.0",
+  "description": "Scribe Editor core package",
+  "license": "BSD-3-Clause",
+  "type": "module",
+  "author": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "editor",
+    "rich-text",
+    "scribe"
+  ],
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "types",
+    "public",
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist types node_modules",
+    "build:bundle": "esbuild src/index.ts --bundle --format=esm --platform=browser --minify --banner:js=\"/* $npm_package_name v$npm_package_version */\" --outfile=dist/index.js",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build": "npm run build:bundle && npm run build:types",
+    "start": "node -e \"const port=process.env.PORT||3000; console.log('Dev server URL: http://localhost:' + port + '/');\" && run-p start:*",
+    "start:bundle": "esbuild src/index.ts --bundle --format=esm --platform=browser --banner:js=\"/* $npm_package_name v$npm_package_version */\" --outfile=dist/index.js --watch",
+    "start:types": "tsc -w -p tsconfig.json",
+    "start:server": "node ./scripts/dev-server.mjs",
+    "start:open": "node --input-type=module -e \"import open from 'open'; const port=process.env.PORT||3000; setTimeout(() => open('http://localhost:' + port + '/'), 500);\"",
+    "dev": "npm run start",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "npm-run-all": "^4.1.5",
+    "open": "^9.1.0",
+    "typescript": "^5.5.4"
+  }
+}
