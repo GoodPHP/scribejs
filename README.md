@@ -31,7 +31,7 @@ Website: https://scribejs.top
 
 ## Screenshots
 
-| Hero | Fixed Toolbar | Quick Start |
+| API | Inline Toolbar | Fixed Editor |
 | --- | --- | --- |
 | ![API preview](docs/screenshots/image2.png) | ![Inline toolbar demo](docs/screenshots/image3.png) | ![Fixed editor](docs/screenshots/image4.png) |
 
