@@ -1,17 +1,32 @@
 {
   "name": "scribejs-editor",
   "version": "0.1.0",
-  "description": "Scribe Editor core package",
+  "description": "Lightweight, plugin-first rich text editor core with a fixed toolbar demo and typed API.",
   "license": "BSD-3-Clause",
   "type": "module",
-  "author": "",
+  "author": "devfuture",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/GoodPHP/scribejs"
   },
   "keywords": [
     "editor",
     "rich-text",
+    "rich-text-editor",
+    "wysiwyg",
+    "wysiwyg-editor",
+    "contenteditable",
+    "html-editor",
+    "text-editor",
+    "document-editor",
+    "toolbar",
+    "plugin",
+    "plugins",
+    "sanitize",
+    "sanitize-html",
+    "selection",
+    "typescript",
+    "browser",
     "scribe"
   ],
   "sideEffects": false,

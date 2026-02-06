@@ -33,17 +33,17 @@ Website: https://scribejs.top
 
 | Hero | Fixed Toolbar | Quick Start |
 | --- | --- | --- |
-| ![Hero preview](docs/screenshots/hero.svg) | ![Fixed toolbar demo](docs/screenshots/editor.svg) | ![Quick start snippets](docs/screenshots/code.svg) |
+| ![Hero preview](docs/screenshots/image2.png) | ![Fixed toolbar demo](docs/screenshots/image3.png) | ![Quick start snippets](docs/screenshots/image4.png) |
 
 ## Download
 
-- NPM: `npm install scribe-editor`
-- Git: `git clone <your-repo-url>`
+- NPM: `npm i scribejs-editor`
+- Git: `git clone https://github.com/GoodPHP/scribejs`
 
 ## Usage
 
 ```ts
-import { createEditor } from 'scribe-editor';
+import { createEditor } from 'scribejs-editor';
 
 const editor = createEditor({
   target: '#editor',
