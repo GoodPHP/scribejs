@@ -33,7 +33,7 @@ Website: https://scribejs.top
 
 | Hero | Fixed Toolbar | Quick Start |
 | --- | --- | --- |
-| ![Hero preview](docs/screenshots/image2.png) | ![Fixed toolbar demo](docs/screenshots/image3.png) | ![Quick start snippets](docs/screenshots/image4.png) |
+| ![API preview](docs/screenshots/image2.png) | ![Inline toolbar demo](docs/screenshots/image3.png) | ![Fixed editor](docs/screenshots/image4.png) |
 
 ## Download
 
