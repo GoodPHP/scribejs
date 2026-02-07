@@ -1,8 +1,7 @@
-import { createEditor } from '/dist/index.js';
+import { Scribe } from '/dist/index.js'; window.Scribe = Scribe;
 
-const fixedEditor = createEditor({
-  target: '#editor-fixed',
-  placeholder: 'Start typing...'
+const fixedEditor = Scribe.init('#editor-fixed', {
+  placeholder: 'Write something amazing...'
 });
 
 const setupToolbar = (toolbar, editor) => {
@@ -88,65 +87,56 @@ setupStatus(
 );
 
 const sample = `
-<h1>Welcome to Scribe</h1>
-<p>Scribe is a <strong>production-ready</strong> rich text editor with a simple, intuitive API. Just call methods like <code>editor.bold()</code> — no complex commands to memorize.</p>
-<h2>Key Features</h2>
+<h1>Welcome to Scribe Editor</h1>
+<p>This is a live demo of the Scribe editor. Select any text to see the toolbar!</p>
+
+<p>Try making text <em>italic</em>, adding a <a href="https://example.com/">link</a>, or creating headings and lists.</p>
+
 <ul>
-  <li><strong>Simple API</strong> — Direct methods like .bold(), .italic(), .link()</li>
-  <li><strong>Inline-first editing</strong> — Edit content directly where it lives</li>
-  <li><strong>Plugin architecture</strong> — Extend with modular plugins</li>
-  <li><strong>XSS protection</strong> — Built-in HTML sanitization</li>
+  <li>Feature 1: Floating toolbar</li>
+  <li>Feature 2: Direct API methods</li>
+  <li>Feature 3: Built-in sanitization</li>
 </ul>
 
-<h2>Try It Out</h2>
-<p>Select any text to see the toolbar in action. Try making text <strong>bold</strong>, <em>italic</em>, or add a <a href="https://example.com">link</a>.</p>
 <blockquote>
-  "The best interface is no interface at all." — Golden Krishna
+  Scribe is designed to be lightweight and easy to integrate.
 </blockquote>
-
-<p>Ready to build something amazing? Check out the <strong>docs</strong>! 🚀</p>
 `;
 
-const fixedSample = `
-<p>This editor uses a fixed toolbar that's always visible. Great for longer editing sessions where you need quick access to all formatting options.</p>
-<p>Try creating some <strong>formatted content</strong> using the toolbar above!</p>
-`;
-
-const fillButton = document.getElementById('btn-fill');
-const clearButton = document.getElementById('btn-clear');
 const vanillaSnippet = document.getElementById('code-snippet-vanilla');
 const reactSnippet = document.getElementById('code-snippet-react');
 const copyVanillaButton = document.getElementById('btn-copy-vanilla');
 const copyReactButton = document.getElementById('btn-copy-react');
 
-const vanillaExample = `import { createEditor } from 'scribe-editor';
+const vanillaExample = `<!-- One-line initialization -->
+<div id="editor">
+  <p>Start editing...</p>
+</div>
 
-const editor = createEditor({
-  target: '#editor',
-  placeholder: 'Start typing...'
-});
+<script type="module">
+  import { Scribe } from './scribe.js';
+  
+  const editor = Scribe.init('#editor');
+  
+  // Direct methods - no exec() needed
+  editor.bold();
+  editor.link('https://example.com');
+</script>`;
 
-editor.bold();
-editor.link('https://example.com');
+const reactExample = `import { ScribeEditor, ScribeEditorRef } from '@/components/scribe';
+import { useRef, useState } from 'react';
 
-const html = editor.getHTML();`;
-
-const reactExample = `import { useEffect, useRef } from 'react';
-import { createEditor } from 'scribe-editor';
-
-export function Editor() {
-  const elRef = useRef(null);
-
-  useEffect(() => {
-    if (!elRef.current) return;
-    const editor = createEditor({
-      target: elRef.current,
-      placeholder: 'Start typing...'
-    });
-    return () => editor.destroy?.();
-  }, []);
-
-  return <div ref={elRef} className="editor" />;
+function BasicEditor() {
+  const [content, setContent] = useState('<p>Hello world!</p>');
+  
+  return (
+    <ScribeEditor
+      defaultValue={content}
+      placeholder="Start writing..."
+      toolbar="floating"
+      onChange={(html) => setContent(html)}
+    />
+  );
 }`;
 
 if (vanillaSnippet) {
@@ -158,9 +148,6 @@ if (reactSnippet) {
 }
 
 fixedEditor.setHTML(sample);
-
-fillButton.addEventListener('click', () => fixedEditor.setHTML(sample));
-clearButton.addEventListener('click', () => fixedEditor.setHTML(''));
 
 if (copyVanillaButton) {
   copyVanillaButton.addEventListener('click', async () => {

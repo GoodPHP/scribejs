@@ -32,23 +32,22 @@
   "sideEffects": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "types": "types/index.d.ts",
+  "types": "src/types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
+      "types": "./src/types/index.d.ts",
       "import": "./dist/index.js"
     }
   },
   "files": [
     "dist",
-    "types",
     "public",
     "src",
     "LICENSE",
     "README.md"
   ],
   "scripts": {
-    "clean": "rm -rf dist types node_modules",
+    "clean": "rm -rf dist src/types node_modules",
     "build:bundle": "esbuild src/index.ts --bundle --format=esm --platform=browser --minify --banner:js=\"/* $npm_package_name v$npm_package_version */\" --outfile=dist/index.js",
     "build:types": "tsc -p tsconfig.types.json",
     "build": "npm run build:bundle && npm run build:types",

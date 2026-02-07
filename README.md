@@ -1,7 +1,7 @@
 # Scribe Editor
 
 <p align="center">
-  <img src="docs/screenshots/image1.png" alt="Scribe Editor hero preview" width="700" />
+  <img src="https://scribejs.top/docs/screenshots/image1.png" alt="Scribe Editor hero preview" width="700" />
 </p>
 
 Lightweight rich-text editor core with a modern demo UI, fixed toolbar workflow, and a minimal API.
@@ -33,11 +33,12 @@ Website: https://scribejs.top
 
 | API | Inline Toolbar | Fixed Editor |
 | --- | --- | --- |
-| ![API preview](docs/screenshots/image2.png) | ![Inline toolbar demo](docs/screenshots/image3.png) | ![Fixed editor](docs/screenshots/image4.png) |
+| ![API preview](https://scribejs.top/docs/screenshots/image2.png) | ![Inline toolbar demo](https://scribejs.top/docs/screenshots/image3.png) | ![Fixed editor](https://scribejs.top/docs/screenshots/image4.png) |
 
 ## Download
 
 - NPM: `npm i scribejs-editor`
+- CDN: `https://unpkg.com/scribejs-editor`
 - Git: `git clone https://github.com/GoodPHP/scribejs`
 
 ## Usage

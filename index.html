@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Scribe Editor — Inline Rich Text Editor</title>
+    <title>Scribe Editor — Simple API Rich Text Editor</title>
     <link rel="icon" href="/public/favicon.ico" type="image/svg+xml" />
     <link rel="stylesheet" href="/public/demo.css" />
   </head>
@@ -12,50 +12,61 @@
       <div class="hero-bg"></div>
       <div class="container hero-content">
         <div class="hero-copy">
-          <span class="badge">Production Ready</span>
+          <span class="badge">Simple API</span>
           <h1>
             <span class="accent">Scribe</span>
             <span> Editor</span>
           </h1>
           <p>
-            A modern, extensible rich text editor for the web. Inline-first, plugin-based,
-            and built for real production environments.
+            A modern, inline-first rich text editor with a simple API. Use direct methods like
+            <strong>editor.bold()</strong> - no complex commands needed.
           </p>
         </div>
         <div class="hero-actions">
-          <a id="btn-clear" class="btn ghost btn-sm" href="https://scribejs.top" target="_blank" rel="noopener noreferrer">Visit website</a>
+          <a class="btn hero-btn" href="https://scribejs.top/docs" target="_blank" rel="noopener noreferrer">Read docs</a>
+          <a class="btn ghost hero-btn" href="https://github.com/GoodPHP/scribejs" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
     </header>
 
     <section class="container features">
       <div class="feature-card">
-        <div class="feature-icon">◎</div>
-        <h3>Plugin Architecture</h3>
-        <p>Extend functionality with modular plugins. Add only what you need.</p>
+        <div class="feature-icon">API</div>
+        <h3>Simple API</h3>
+        <p>Direct methods like <strong>.bold()</strong>, <strong>.italic()</strong>, <strong>.link()</strong>.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>XSS Protection</h3>
-        <p>Built-in HTML sanitization. Safe paste handling from Word &amp; Google Docs.</p>
+        <div class="feature-icon">50KB</div>
+        <h3>Lightweight</h3>
+        <p>&lt; 50KB gzipped with zero dependencies.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">🎨</div>
-        <h3>Themeable</h3>
-        <p>CSS variables for complete control. Light &amp; dark mode ready.</p>
+        <div class="feature-icon">UNI</div>
+        <h3>Universal</h3>
+        <p>Works with React, Vue, Svelte, or Vanilla JS.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">IFR</div>
+        <h3>Iframe Ready</h3>
+        <p>Edit content inside iframes with full isolation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">EXT</div>
+        <h3>Extensible</h3>
+        <p>Plugin architecture for custom features.</p>
       </div>
     </section>
 
     <section class="container demo">
       <div class="section-heading">
-        <h2>Try It Out</h2>
-        <p>Use the fixed toolbar below to format content.</p>
+        <h2>Live Demo</h2>
+        <p>Select text to see the toolbar in action.</p>
       </div>
 
       <div class="panel">
         <div class="panel-header">
           <h3>Fixed Toolbar Demo</h3>
-          <p>A persistent toolbar for a classic editing workflow.</p>
+          <p>Use direct formatting methods with a persistent toolbar.</p>
         </div>
           <div class="toolbar" id="toolbar-fixed">
             <div class="group">
@@ -174,7 +185,7 @@
             </div>
           </div>
 
-          <div id="editor-fixed" class="editor" data-placeholder="Start typing..."></div>
+          <div id="editor-fixed" class="editor" data-placeholder="Write something amazing..."></div>
 
           <div class="status">
             <div>
@@ -196,7 +207,7 @@
       <div class="container">
         <div class="code-header">
           <h3>Quick Start</h3>
-          <p>Vanilla JS and React usage on one page.</p>
+          <p>One-line initialization and a simple React wrapper.</p>
         </div>
         <div class="code-grid">
           <div class="code-card">
