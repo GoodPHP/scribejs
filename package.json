@@ -49,8 +49,7 @@
   "scripts": {
     "clean": "rm -rf dist src/types node_modules",
     "build:bundle": "esbuild src/index.ts --bundle --format=esm --platform=browser --minify --banner:js=\"/* $npm_package_name v$npm_package_version */\" --outfile=dist/index.js",
-    "build:types": "tsc -p tsconfig.types.json",
-    "build": "npm run build:bundle && npm run build:types",
+    "build": "npm run build:bundle",
     "start": "node -e \"const port=process.env.PORT||3000; console.log('Dev server URL: http://localhost:' + port + '/');\" && run-p start:*",
     "start:bundle": "esbuild src/index.ts --bundle --format=esm --platform=browser --banner:js=\"/* $npm_package_name v$npm_package_version */\" --outfile=dist/index.js --watch",
     "start:types": "tsc -w -p tsconfig.json",
