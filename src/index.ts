@@ -4,6 +4,8 @@ export { createEditor, init, Scribe } from './core';
 export { HTMLSanitizer } from './sanitizer';
 export { SelectionManager } from './selection';
 export { HistoryManager } from './history';
+export { DOMNormalizer } from './normalizer';
+export { CommandRegistry, createDefaultRegistrations } from './command-registry';
 export { coreCommands, defaultShortcuts } from './commands';
 export { defaultPlugins } from './plugins';
 
@@ -13,12 +15,16 @@ export type {
   EditorMode,
   Plugin,
   CommandHandler,
+  CommandMetadata,
+  CommandCategory,
   ShortcutConfig,
   ToolbarItem,
   ToolbarConfig,
   SanitizeConfig,
   SelectionState,
+  SelectionSnapshot,
   FormatState,
+  FormatStateChangeEvent,
   HistoryEntry,
   PasteData,
 } from './types';

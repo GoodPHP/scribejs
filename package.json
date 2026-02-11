@@ -1,6 +1,6 @@
 {
   "name": "scribejs-editor",
-  "version": "0.1.0",
+  "version": "1.0.1",
   "description": "Lightweight, plugin-first rich text editor core with a fixed toolbar demo and typed API.",
   "license": "BSD-3-Clause",
   "type": "module",

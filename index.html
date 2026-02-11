@@ -1,269 +1,419 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Scribe Editor — Simple API Rich Text Editor</title>
-    <link rel="icon" href="/public/favicon.ico" type="image/svg+xml" />
-    <link rel="stylesheet" href="/public/demo.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-content">
-        <div class="hero-copy">
-          <span class="badge">Simple API</span>
-          <h1>
-            <span class="accent">Scribe</span>
-            <span> Editor</span>
-          </h1>
-          <p>
-            A modern, inline-first rich text editor with a simple API. Use direct methods like
-            <strong>editor.bold()</strong> - no complex commands needed.
-          </p>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scribe Editor — Simple API Rich Text Editor</title>
+  <link rel="icon" href="/public/favicon.ico" type="image/svg+xml" />
+  <link rel="stylesheet" href="/public/demo.css" />
+</head>
+
+<body>
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-copy">
+        <span class="badge">Simple API</span>
+        <h1>
+          <span class="accent">Scribe</span>
+          <span> Editor</span>
+        </h1>
+        <p>
+          A modern, inline-first rich text editor with a simple API. Use direct methods like
+          <strong>editor.bold()</strong> - no complex commands needed.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn hero-btn" href="https://scribejs.top/docs" target="_blank" rel="noopener noreferrer">Read docs</a>
+        <a class="btn ghost hero-btn" href="https://github.com/GoodPHP/scribejs" target="_blank"
+          rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="container features">
+    <div class="feature-card">
+      <div class="feature-icon">API</div>
+      <h3>Simple API</h3>
+      <p>Direct methods like <strong>.bold()</strong>, <strong>.italic()</strong>, <strong>.link()</strong>.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">50KB</div>
+      <h3>Lightweight</h3>
+      <p>&lt; 50KB gzipped with zero dependencies.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">UNI</div>
+      <h3>Universal</h3>
+      <p>Works with React, Vue, Svelte, or Vanilla JS.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">IFR</div>
+      <h3>Iframe Ready</h3>
+      <p>Edit content inside iframes with full isolation.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">EXT</div>
+      <h3>Extensible</h3>
+      <p>Plugin architecture for custom features.</p>
+    </div>
+  </section>
+
+  <section class="container demo">
+    <div class="section-heading">
+      <h2>Try It Out</h2>
+      <p>Select text to see the floating toolbar, or use the fixed toolbar below.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="floating">Floating Toolbar</button>
+      <button class="tab" data-tab="fixed">Fixed Toolbar</button>
+    </div>
+
+    <div class="tab-panel active" data-panel="floating">
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Floating Toolbar Demo</h3>
+          <p>Select any text to reveal the contextual formatting toolbar.</p>
         </div>
-        <div class="hero-actions">
-          <a class="btn hero-btn" href="https://scribejs.top/docs" target="_blank" rel="noopener noreferrer">Read docs</a>
-          <a class="btn ghost hero-btn" href="https://github.com/GoodPHP/scribejs" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+        <div class="editor-shell">
+          <div class="toolbar floating" id="toolbar-floating">
+            <div class="group">
+              <button data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 5h6a3.5 3.5 0 0 1 0 7H7z" />
+                  <path d="M7 12h7a3.5 3.5 0 0 1 0 7H7z" />
+                </svg>
+              </button>
+              <button data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 5h7M7 19h7M14 5l-4 14" />
+                </svg>
+              </button>
+              <button data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 4v6a5 5 0 0 0 10 0V4" />
+                  <path d="M4 20h16" />
+                </svg>
+              </button>
+              <button data-cmd="strike" title="Strike" aria-label="Strikethrough">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M16 4H9a3 3 0 0 0-2.83 4M14 12a4 4 0 0 1 0 8H6" />
+                  <path d="M4 12h16" />
+                </svg>
+              </button>
+              <button data-cmd="code" title="Inline Code" aria-label="Inline code">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 8l-4 4 4 4" />
+                  <path d="M16 8l4 4-4 4" />
+                </svg>
+              </button>
+            </div>
+            <div class="separator"></div>
+            <div class="group">
+              <button data-cmd="link" title="Link" aria-label="Insert link">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
+              </button>
+            </div>
+            <div class="separator"></div>
+            <div class="group">
+              <button data-cmd="heading" data-arg="1" title="Heading 1" aria-label="Heading 1"><span
+                  class="toolbar-tag">H1</span></button>
+              <button data-cmd="heading" data-arg="2" title="Heading 2" aria-label="Heading 2"><span
+                  class="toolbar-tag">H2</span></button>
+              <button data-cmd="blockquote" title="Quote" aria-label="Blockquote">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M3 21l.5-2c.5-2 1-3 1.5-4s1-2 1.5-3L9 7h3l-2 6h4l-2 8zM15 21l.5-2c.5-2 1-3 1.5-4s1-2 1.5-3l2.5-5h3l-2 6h4l-2 8z" />
+                </svg>
+              </button>
+            </div>
+            <div class="separator"></div>
+            <div class="group">
+              <button data-cmd="unorderedList" title="Bullet List" aria-label="Bullet list">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 6h12" />
+                  <path d="M8 12h12" />
+                  <path d="M8 18h12" />
+                  <circle cx="4" cy="6" r="1.2" />
+                  <circle cx="4" cy="12" r="1.2" />
+                  <circle cx="4" cy="18" r="1.2" />
+                </svg>
+              </button>
+              <button data-cmd="orderedList" title="Numbered List" aria-label="Numbered list">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 6h12" />
+                  <path d="M8 12h12" />
+                  <path d="M8 18h12" />
+                  <path d="M4 6h2" />
+                  <path d="M4 12h2" />
+                  <path d="M4 18h2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div id="editor-floating" class="editor" data-placeholder="Start writing..."></div>
         </div>
       </div>
-    </header>
+    </div>
 
-    <section class="container features">
-      <div class="feature-card">
-        <div class="feature-icon">API</div>
-        <h3>Simple API</h3>
-        <p>Direct methods like <strong>.bold()</strong>, <strong>.italic()</strong>, <strong>.link()</strong>.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">50KB</div>
-        <h3>Lightweight</h3>
-        <p>&lt; 50KB gzipped with zero dependencies.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">UNI</div>
-        <h3>Universal</h3>
-        <p>Works with React, Vue, Svelte, or Vanilla JS.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">IFR</div>
-        <h3>Iframe Ready</h3>
-        <p>Edit content inside iframes with full isolation.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">EXT</div>
-        <h3>Extensible</h3>
-        <p>Plugin architecture for custom features.</p>
-      </div>
-    </section>
-
-    <section class="container demo">
-      <div class="section-heading">
-        <h2>Live Demo</h2>
-        <p>Select text to see the toolbar in action.</p>
-      </div>
-
+    <div class="tab-panel" data-panel="fixed">
       <div class="panel">
         <div class="panel-header">
           <h3>Fixed Toolbar Demo</h3>
-          <p>Use direct formatting methods with a persistent toolbar.</p>
+          <p>A persistent toolbar for traditional editing experience.</p>
         </div>
+
+        <div class="toolbar-container">
           <div class="toolbar" id="toolbar-fixed">
             <div class="group">
               <button data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7z"/><path d="M7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 5h6a3.5 3.5 0 0 1 0 7H7z" />
+                  <path d="M7 12h7a3.5 3.5 0 0 1 0 7H7z" />
+                </svg>
               </button>
               <button data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5h7M7 19h7M14 5l-4 14"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 5h7M7 19h7M14 5l-4 14" />
+                </svg>
               </button>
               <button data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4v6a5 5 0 0 0 10 0V4"/><path d="M4 20h16"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 4v6a5 5 0 0 0 10 0V4" />
+                  <path d="M4 20h16" />
+                </svg>
               </button>
               <button data-cmd="strike" title="Strike" aria-label="Strikethrough">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16"/><path d="M9 6c1-.8 2.2-1.2 3.6-1.2 2.4 0 4.4 1 4.4 2.9 0 1.9-1.8 2.7-4 3"/><path d="M7 18c1 .8 2.4 1.2 4 1.2 2.6 0 4.7-1 4.7-2.9"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M16 4H9a3 3 0 0 0-2.83 4M14 12a4 4 0 0 1 0 8H6" />
+                  <path d="M4 12h16" />
+                </svg>
               </button>
               <button data-cmd="code" title="Inline Code" aria-label="Inline code">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 8l-4 4 4 4" />
+                  <path d="M16 8l4 4-4 4" />
+                </svg>
               </button>
             </div>
 
+            <div class="separator"></div>
+
             <div class="group">
-              <button data-cmd="heading" data-arg="1" title="Heading 1" aria-label="Heading 1"><span class="toolbar-tag">H1</span></button>
-              <button data-cmd="heading" data-arg="2" title="Heading 2" aria-label="Heading 2"><span class="toolbar-tag">H2</span></button>
-              <button data-cmd="heading" data-arg="3" title="Heading 3" aria-label="Heading 3"><span class="toolbar-tag">H3</span></button>
-              <button data-cmd="paragraph" title="Paragraph" aria-label="Paragraph"><span class="toolbar-tag">P</span></button>
-              <button data-cmd="blockquote" title="Quote" aria-label="Blockquote">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h5v6H7z"/><path d="M12 18h5v-6h-5z"/></svg>
-              </button>
-              <button data-cmd="codeBlock" title="Code Block" aria-label="Code block">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M8 9l-2 3 2 3"/><path d="M16 9l2 3-2 3"/></svg>
-              </button>
+              <button data-cmd="heading" data-arg="1" title="Heading 1" aria-label="Heading 1"><span
+                  class="toolbar-tag">H1</span></button>
+              <button data-cmd="heading" data-arg="2" title="Heading 2" aria-label="Heading 2"><span
+                  class="toolbar-tag">H2</span></button>
+              <button data-cmd="heading" data-arg="3" title="Heading 3" aria-label="Heading 3"><span
+                  class="toolbar-tag">H3</span></button>
             </div>
+
+            <div class="separator"></div>
 
             <div class="group">
               <button data-cmd="unorderedList" title="Bullet List" aria-label="Bullet list">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><circle cx="4" cy="6" r="1.2"/><circle cx="4" cy="12" r="1.2"/><circle cx="4" cy="18" r="1.2"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 6h12" />
+                  <path d="M8 12h12" />
+                  <path d="M8 18h12" />
+                  <circle cx="4" cy="6" r="1.2" />
+                  <circle cx="4" cy="12" r="1.2" />
+                  <circle cx="4" cy="18" r="1.2" />
+                </svg>
               </button>
               <button data-cmd="orderedList" title="Numbered List" aria-label="Numbered list">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12"/><path d="M8 12h12"/><path d="M8 18h12"/><path d="M4 6h2"/><path d="M4 12h2"/><path d="M4 18h2"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 6h12" />
+                  <path d="M8 12h12" />
+                  <path d="M8 18h12" />
+                  <path d="M4 6h2" />
+                  <path d="M4 12h2" />
+                  <path d="M4 18h2" />
+                </svg>
+              </button>
+              <button data-cmd="blockquote" title="Quote" aria-label="Blockquote">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M3 21l.5-2c.5-2 1-3 1.5-4s1-2 1.5-3L9 7h3l-2 6h4l-2 8zM15 21l.5-2c.5-2 1-3 1.5-4s1-2 1.5-3l2.5-5h3l-2 6h4l-2 8z" />
+                </svg>
               </button>
             </div>
 
-            <div class="group">
-              <button data-cmd="alignLeft" title="Align Left" aria-label="Align left">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h10"/><path d="M5 10h14"/><path d="M5 14h10"/><path d="M5 18h14"/></svg>
-              </button>
-              <button data-cmd="alignCenter" title="Align Center" aria-label="Align center">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10"/><path d="M5 10h14"/><path d="M7 14h10"/><path d="M5 18h14"/></svg>
-              </button>
-              <button data-cmd="alignRight" title="Align Right" aria-label="Align right">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h10"/><path d="M5 10h14"/><path d="M9 14h10"/><path d="M5 18h14"/></svg>
-              </button>
-              <button data-cmd="alignJustify" title="Justify" aria-label="Justify">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14"/><path d="M5 10h14"/><path d="M5 14h14"/><path d="M5 18h14"/></svg>
-              </button>
-              <button data-cmd="indent" title="Indent" aria-label="Indent">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h8"/><path d="M4 10h8"/><path d="M4 14h8"/><path d="M4 18h8"/><path d="M14 8l4 4-4 4"/></svg>
-              </button>
-              <button data-cmd="outdent" title="Outdent" aria-label="Outdent">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6h8"/><path d="M12 10h8"/><path d="M12 14h8"/><path d="M12 18h8"/><path d="M10 8l-4 4 4 4"/></svg>
-              </button>
-            </div>
+            <div class="separator"></div>
 
             <div class="group">
               <button data-cmd="link" title="Link" aria-label="Insert link">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a3.5 3.5 0 0 1 3.5-3.5h3a3.5 3.5 0 1 1 0 7h-3"/><path d="M15 12a3.5 3.5 0 0 1-3.5 3.5H8.5a3.5 3.5 0 1 1 0-7h3"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
               </button>
               <button data-cmd="unlink" title="Unlink" aria-label="Remove link">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12a3.5 3.5 0 0 1 3.5-3.5h3a3.5 3.5 0 1 1 0 7h-3"/><path d="M15 12a3.5 3.5 0 0 1-3.5 3.5H8.5a3.5 3.5 0 1 1 0-7h3"/><path d="M4 4l16 16"/></svg>
-              </button>
-              <button data-cmd="insertHR" title="Horizontal Rule" aria-label="Insert horizontal rule">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M7 8h10"/><path d="M7 16h10"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M18.84 12.25l1.72-1.71h-.02a5.004 5.004 0 0 0-.12-7.07 5.006 5.006 0 0 0-6.95 0l-1.72 1.71" />
+                  <path d="M5.17 11.75l-1.71 1.71a5.004 5.004 0 0 0 .12 7.07 5.006 5.006 0 0 0 6.95 0l1.71-1.71" />
+                  <path d="m15 9-6 6" />
+                </svg>
               </button>
             </div>
 
-            <div class="group">
-              <label class="select">
-                <span>Size</span>
-                <select data-role="font-size">
-                  <option value="12">12</option>
-                  <option value="14">14</option>
-                  <option value="16" selected>16</option>
-                  <option value="18">18</option>
-                  <option value="24">24</option>
-                  <option value="32">32</option>
-                </select>
-              </label>
-              <label class="select">
-                <span>Font</span>
-                <select data-role="font-family">
-                  <option value="Inter, system-ui, sans-serif" selected>Inter</option>
-                  <option value="Georgia, serif">Georgia</option>
-                  <option value="'Courier New', monospace">Courier</option>
-                </select>
-              </label>
-              <label class="color">
-                <span>Text</span>
-                <input data-role="text-color" type="color" value="#0f172a" />
-              </label>
-              <label class="color">
-                <span>Bg</span>
-                <input data-role="bg-color" type="color" value="#ffffff" />
-              </label>
-            </div>
+            <div class="separator"></div>
 
             <div class="group">
               <button data-cmd="undo" title="Undo" aria-label="Undo">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7H3v4"/><path d="M3 11c2-4 7-6 11-4 3 1.5 5 4.5 5 8"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M3 7v6h6" />
+                  <path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13" />
+                </svg>
               </button>
               <button data-cmd="redo" title="Redo" aria-label="Redo">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 7h4v4"/><path d="M21 11c-2-4-7-6-11-4-3 1.5-5 4.5-5 8"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 7v6h-6" />
+                  <path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7" />
+                </svg>
               </button>
-              <button data-cmd="clearFormat" title="Clear Formatting" aria-label="Clear formatting">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h8l-4 12"/><path d="M16 16l4 4"/><path d="M18 14l-4 4"/></svg>
-              </button>
             </div>
           </div>
 
-          <div id="editor-fixed" class="editor" data-placeholder="Write something amazing..."></div>
-
-          <div class="status">
-            <div>
-              <strong>HTML</strong>
-              <pre id="html-output-fixed"></pre>
-            </div>
-            <div>
-              <strong>Text</strong>
-              <pre id="text-output-fixed"></pre>
-            </div>
-            <div class="meta">
-              <span id="empty-state-fixed">Empty: true</span>
-            </div>
-          </div>
-      </div>
-    </section>
-
-    <section class="code-section">
-      <div class="container">
-        <div class="code-header">
-          <h3>Quick Start</h3>
-          <p>One-line initialization and a simple React wrapper.</p>
-        </div>
-        <div class="code-grid">
-          <div class="code-card">
-            <div class="code-card-header">
-              <h4>Vanilla JS</h4>
-              <button id="btn-copy-vanilla" class="btn ghost">Copy</button>
-            </div>
-            <pre class="code-block"><code id="code-snippet-vanilla"></code></pre>
-          </div>
-          <div class="code-card">
-            <div class="code-card-header">
-              <h4>React</h4>
-              <button id="btn-copy-react" class="btn ghost">Copy</button>
-            </div>
-            <pre class="code-block"><code id="code-snippet-react"></code></pre>
+          <div class="editor-shell">
+            <div id="editor-fixed" class="scribe-content editor" data-placeholder="Write something amazing..."></div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="container api">
-      <h2>Simple, Intuitive API</h2>
-      <div class="api-grid">
-        <div class="api-card">
-          <h4>editor.bold()</h4>
-          <p>Direct methods for formatting — no command strings to memorize.</p>
-          <span>editor.italic() | editor.underline()</span>
+  <section class="code-section">
+    <div class="container">
+      <div class="code-header">
+        <h3>Quick Start</h3>
+        <p>One-line initialization and a simple React wrapper.</p>
+      </div>
+      <div class="code-window">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control red"></span>
+            <span class="control yellow"></span>
+            <span class="control green"></span>
+          </div>
+          <div class="window-tabs">
+            <button class="window-tab active" data-target="vanilla">Vanilla JS</button>
+            <button class="window-tab" data-target="react">React</button>
+          </div>
         </div>
-        <div class="api-card">
-          <h4>editor.heading(2)</h4>
-          <p>Block formatting with simple, typed parameters.</p>
-          <span>editor.blockquote() | editor.orderedList()</span>
-        </div>
-        <div class="api-card">
-          <h4>editor.link(url)</h4>
-          <p>Insert and manage links with ease.</p>
-          <span>editor.link('https://...') | editor.unlink()</span>
-        </div>
-        <div class="api-card">
-          <h4>editor.on('change', fn)</h4>
-          <p>Subscribe to events for real-time updates.</p>
-          <span>'change' | 'focus' | 'blur' | 'selectionChange'</span>
+        <div class="window-content">
+          <div class="code-panel active" id="code-vanilla">
+            <pre><code><span class="token kwd">import</span> { Scribe } <span class="token kwd">from</span> <span class="token str">'./scribe.js'</span>;
+
+<span class="token cmt">// Initialize with one line</span>
+<span class="token kwd">const</span> editor = Scribe.<span class="token fn">init</span>(<span class="token str">'#editor'</span>);
+
+<span class="token cmt">// Direct methods — no exec() needed!</span>
+editor.<span class="token fn">bold</span>();
+editor.<span class="token fn">italic</span>();
+editor.<span class="token fn">link</span>(<span class="token str">'https://example.com'</span>);
+editor.<span class="token fn">heading</span>(<span class="token num">2</span>);
+
+<span class="token cmt">// Get content</span>
+<span class="token kwd">const</span> html = editor.<span class="token fn">getHTML</span>();</code></pre>
+            <button class="btn-copy" data-target="code-vanilla">Copy</button>
+          </div>
+
+          <div class="code-panel" id="code-react">
+            <pre><code><span class="token kwd">import</span> { ScribeEditor } <span class="token kwd">from</span> <span class="token str">'@scribejs/react'</span>;
+
+<span class="token kwd">function</span> <span class="token fn">App</span>() {
+  <span class="token kwd">const</span> editorRef = <span class="token fn">useRef</span>(<span class="token kwd">null</span>);
+  
+  <span class="token kwd">return</span> (
+    &lt;<span class="token cls">ScribeEditor</span>
+      <span class="token attr">ref</span>={editorRef}
+      <span class="token attr">defaultValue</span>=<span class="token str">"&lt;p&gt;Start writing...&lt;/p&gt;"</span>
+      <span class="token attr">toolbar</span>=<span class="token str">"floating"</span>
+      <span class="token attr">onChange</span>={(html) => console.<span class="token fn">log</span>(html)}
+    /&gt;
+  );
+}</code></pre>
+            <button class="btn-copy" data-target="code-react">Copy</button>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="footer">
-      <div class="container footer-content">
-        <div>
-          <strong>Scribe Editor</strong>
-          <span class="version">v1.0.0</span>
-        </div>
-        <p>Built with ❤️ for developers who care about their users.</p>
+  <section class="container api">
+    <h2>Simple, Intuitive API</h2>
+    <div class="api-grid">
+      <div class="api-card">
+        <h4>editor.bold()</h4>
+        <p>Direct methods for formatting — no command strings to memorize.</p>
+        <span>editor.italic() | editor.underline()</span>
       </div>
-    </footer>
+      <div class="api-card">
+        <h4>editor.heading(2)</h4>
+        <p>Block formatting with simple, typed parameters.</p>
+        <span>editor.blockquote() | editor.orderedList()</span>
+      </div>
+      <div class="api-card">
+        <h4>editor.link(url)</h4>
+        <p>Insert and manage links with ease.</p>
+        <span>editor.link('https://...') | editor.unlink()</span>
+      </div>
+      <div class="api-card">
+        <h4>editor.on('change', fn)</h4>
+        <p>Subscribe to events for real-time updates.</p>
+        <span>'change' | 'focus' | 'blur' | 'selectionChange'</span>
+      </div>
+    </div>
+  </section>
 
-    <script type="module" src="/public/demo.js"></script>
-  </body>
+  <footer class="footer">
+    <div class="container footer-content">
+      <div>
+        <strong>Scribe Editor</strong>
+        <span class="version">v1.0.1</span>
+      </div>
+      <p>Built with ❤️ for developers who care about their users.</p>
+    </div>
+  </footer>
+
+  <!-- Link Modal -->
+  <div class="link-modal-backdrop"></div>
+  <div class="link-modal">
+    <form id="link-form">
+      <div class="input-group">
+        <svg viewBox="0 0 24 24">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+        <input type="text" id="link-url-input" placeholder="https://..." autocomplete="off">
+      </div>
+      <div class="actions">
+        <div class="left">
+          <button type="button" id="link-remove" class="remove" title="Remove link">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+            </svg>
+            Remove
+          </button>
+        </div>
+        <div class="right">
+          <button type="button" id="link-cancel" class="cancel">Cancel</button>
+          <button type="submit" class="apply">Apply</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="/public/demo.js"></script>
+</body>
+
 </html>

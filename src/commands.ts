@@ -121,7 +121,7 @@ export const coreCommands: Record<string, CommandHandler> = {
   // Links
   link: (editor, url: unknown) => {
     if (typeof url !== 'string') return;
-    
+
     const selection = editor.getSelection();
     if (!selection) return;
 
@@ -129,7 +129,7 @@ export const coreCommands: Record<string, CommandHandler> = {
       // Update existing link
       const range = selection.range;
       if (!range) return;
-      
+
       const anchor = findParentTag(range.commonAncestorContainer, 'a') as HTMLAnchorElement | null;
       if (anchor) {
         anchor.href = url;
@@ -176,7 +176,7 @@ export const coreCommands: Record<string, CommandHandler> = {
   // Font styling
   setFontSize: (editor, size: unknown) => {
     if (typeof size !== 'string' && typeof size !== 'number') return;
-    
+
     const selection = editor.getSelection();
     if (!selection || selection.collapsed) return;
 
@@ -210,8 +210,8 @@ export const coreCommands: Record<string, CommandHandler> = {
 function findParentTag(node: Node | null, tagName: string): Element | null {
   let current: Node | null = node;
   while (current) {
-    if (current.nodeType === Node.ELEMENT_NODE && 
-        (current as Element).tagName.toLowerCase() === tagName.toLowerCase()) {
+    if (current.nodeType === Node.ELEMENT_NODE &&
+      (current as Element).tagName.toLowerCase() === tagName.toLowerCase()) {
       return current as Element;
     }
     current = current.parentNode;
