@@ -8,6 +8,51 @@ Lightweight rich-text editor core with a modern demo UI, fixed toolbar workflow,
 
 Website: https://scribejs.top
 
+## What's new in v1.0.1
+
+### Cross-browser toolbar fixes
+
+Toolbar state (bold / italic / underline / strike / etc.) is now **identical across Chrome, Firefox, and Safari**.
+
+#### Selection handling
+- Normalized selection layer abstracts `window.getSelection()` and `Range` differences.
+- Handles collapsed, backward, multi-node, and text-vs-element selections uniformly.
+- Full iframe editing context support via `ownerDocument.defaultView`.
+
+#### Toolbar state detection
+- No longer relies on deprecated `document.queryCommandState` / `queryCommandValue`.
+- Walks the DOM tree from the selection range, inspecting parent nodes for active marks (`<b>`, `<strong>`, `<i>`, `<em>`, `<u>`, `<s>`, `<strike>`, `<code>`, `<a>`, `<blockquote>`, `<ol>`, `<ul>`, headings).
+- Alignment detected via `getComputedStyle` with cross-window safety.
+
+#### Safari fixes
+- Selection saved before every toolbar click and restored after action.
+- Prevents selection reset that Safari applies on button focus.
+
+#### Firefox fixes
+- `selectionchange` timing gaps handled via multi-event pipeline (`formatChange`, `change`, `focus`, `blur`).
+- Mutation-safe selection refresh on every DOM change.
+
+#### Polling safety net
+- 100 ms interval while editor is focused force-refreshes `FormatState` from `SelectionManager`.
+- JSON-diff guard ensures React only re-renders when state actually changes.
+- Interval stops on blur and cleans up on unmount.
+
+#### Event model
+- Supports `selectionchange`, `beforeinput`, `input`, `keyup`, `mouseup`.
+- `formatChange` event emitted synchronously after every command execution and DOM normalization.
+
+### Command registry
+- All toolbar items driven by `CommandMeta` — icon, label, shortcut, group, `active()` function.
+- Fixed and floating toolbars share the same metadata; no duplicated logic.
+
+### DOM normalizer (5-phase pipeline)
+1. Structural cleanup (empty nodes, whitespace)
+2. Inline mark merging (adjacent `<b><b>` → single `<b>`)
+3. Block-level normalization
+4. List structure repair
+5. Final whitespace pass
+
+
 ## Table of contents
 
 - [Features](#features)
@@ -55,6 +100,26 @@ editor.bold();
 editor.link('https://example.com');
 
 const html = editor.getHTML();
+```
+
+### React wrapper
+
+```tsx
+import { ScribeEditor, type ScribeEditorRef } from './components/scribe';
+import { useRef } from 'react';
+
+function App() {
+  const editorRef = useRef<ScribeEditorRef>(null);
+
+  return (
+    <ScribeEditor
+      ref={editorRef}
+      toolbar="fixed"
+      placeholder="Write something..."
+      onChange={(html) => console.log(html)}
+    />
+  );
+}
 ```
 
 ## Development
